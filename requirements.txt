@@ -5,3 +5,4 @@ django-celery-results
 redis
 psycopg2-binary
 python-dotenv
+requests
