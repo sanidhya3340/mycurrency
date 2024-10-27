@@ -1,0 +1,34 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <h1>Currency Converter</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Convert</button>
+    </form>
+    
+    {% if conversion_results %}
+        <h2>Conversion Results:</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Source Currency</th>
+                    <th>Target Currency</th>
+                    <th>Rate</th>
+                    <th>Converted Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in conversion_results %}
+                <tr>
+                    <td>{{ result.source }}</td>
+                    <td>{{ result.target }}</td>
+                    <td>{{ result.rate }}</td>
+                    <td>{{ result.converted_amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
