@@ -21,6 +21,17 @@ def apply_migrations():
     run_command("python manage.py makemigrations")
     run_command("python manage.py migrate")
 
+def create_superuser():
+    print("Creating superuser with username 'admin' and password 'admin'...")
+    command = (
+        'python manage.py shell -c "'
+        'from django.contrib.auth import get_user_model; '
+        'User = get_user_model(); '
+        'User.objects.filter(username=\'admin\').exists() or '
+        'User.objects.create_superuser(\'admin\', \'admin@example.com\', \'admin\')"'
+    )
+    run_command(command)
+
 def load_historical_data():
     print("Loading historical data...")
     # Run a Django shell command to load historical data
@@ -37,15 +48,8 @@ def run_server():
 
 if __name__ == "__main__":
     print("Setting up the MyCurrency Django project...")
-    
-    # Step 1: Install dependencies
     install_dependencies()
-
-    # Step 2: Apply database migrations
     apply_migrations()
-
-    # Step 3: Load historical data (synchronously)
+    create_superuser()
     load_historical_data()
-
-    # Step 4: Start the Django development server
     run_server()
