@@ -32,6 +32,16 @@ def create_superuser():
     )
     run_command(command)
 
+def setup_currencies():
+    print("Ensuring 'USD' and 'EUR' currencies exist...")
+    command = (
+        'python manage.py shell -c "'
+        'from exchange.models import Currency; '
+        'Currency.objects.get_or_create(code=\'USD\', defaults={\'name\': \'US Dollar\', \'symbol\': \'$\'}); '
+        'Currency.objects.get_or_create(code=\'EUR\', defaults={\'name\': \'Euro\', \'symbol\': \'€\'});"'
+    )
+    run_command(command)
+
 def load_historical_data():
     print("Loading historical data...")
     # Run a Django shell command to load historical data
@@ -51,5 +61,6 @@ if __name__ == "__main__":
     install_dependencies()
     apply_migrations()
     create_superuser()
+    setup_currencies()
     load_historical_data()
     run_server()
