@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "072686b6-0fcf-4fa6-b40e-eb31fac12b14",
+		"name": "mycurrency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16910737"
+	},
+	"item": [
+		{
+			"name": "Currency List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/currencies/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"currencies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"USD\",\r\n    \"name\": \"DOLLOR\",\r\n    \"symbol\": \"$\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/currencies/USD/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"currencies",
+						"USD",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Rate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/rates/?source_currency=USD&target_currency=EUR&date_from=2023-10-01&date_to=2023-10-05",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rates",
+						""
+					],
+					"query": [
+						{
+							"key": "source_currency",
+							"value": "USD"
+						},
+						{
+							"key": "target_currency",
+							"value": "EUR"
+						},
+						{
+							"key": "date_from",
+							"value": "2023-10-01"
+						},
+						{
+							"key": "date_to",
+							"value": "2023-10-05"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Convert",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/convert/?source_currency=USD&target_currency=EUR&amount=100",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"convert",
+						""
+					],
+					"query": [
+						{
+							"key": "source_currency",
+							"value": "USD"
+						},
+						{
+							"key": "target_currency",
+							"value": "EUR"
+						},
+						{
+							"key": "amount",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"USD\",\r\n    \"name\": \"DOLLOR\",\r\n    \"symbol\": \"$\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/currencies/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"currencies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/currencies/USD/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"currencies",
+						"USD",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
