@@ -1,7 +1,7 @@
 from celery import shared_task
 from .providers import ProviderFactory
 from .models import Currency, CurrencyExchangeRate
-from datetime import timedelta, date
+from datetime import datetime, timedelta
 
 @shared_task
 def load_historical_data(source_currency_code, target_currency_code, start_date, end_date):
@@ -14,7 +14,8 @@ def load_historical_data(source_currency_code, target_currency_code, start_date,
         return
     
     provider = ProviderFactory()
-    current_date = start_date
+    current_date = datetime.strptime(start_date, "%Y-%m-%d").date()
+    end_date = datetime.strptime(end_date, "%Y-%m-%d").date()
 
     while current_date <= end_date:
         try:
